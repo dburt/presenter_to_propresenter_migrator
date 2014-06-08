@@ -1,0 +1,77 @@
+CCLI SongSelect .usr format:
+----------------------------
+
+http://docs.openlp.org/plugins/songs.html#openlp.plugins.songs.lib.cclifileimport.CCLI
+file:///C:/Users/Daveburt/Downloads/FTC_Workspace.txtmport.doImportUsrFile
+
+[File]
+USR file format first line
+Type=
+Indicates the file type e.g. Type=SongSelect Import File
+Version=3.0
+File format version
+[S A2672885]
+Contains the CCLI Song number e.g. 2672885
+Title=
+Contains the song title (e.g. Title=Above All)
+Author=
+Contains a | delimited list of the song authors e.g. Author=LeBlanc, Lenny | Baloche, Paul
+Copyright=
+Contains a | delimited list of the song copyrights e.g. Copyright=1999 Integrity’s Hosanna! Music | LenSongs Publishing (Verwaltet von Gerth Medien Musikverlag)
+Admin=
+Contains the song administrator e.g. Admin=Gerth Medien Musikverlag
+Themes=
+Contains a /t delimited list of the song themes e.g. Themes=Cross/tKingship/tMajesty/tRedeemer
+Keys=
+Contains the keys in which the music is played?? e.g. Keys=A
+Fields=
+Contains a list of the songs fields in order /t delimited e.g. Fields=Vers 1/tVers 2/tChorus 1/tAndere 1
+Words=
+Contains the songs various lyrics in order as shown by the Fields description e.g. Words=Above all powers.... [/n = CR, /n/t = CRLF]
+
+
+Presenter .txt format:
+----------------------
+
+Title - line 1
+Artist - line 2
+Info - .i
+Sequence - .s
+Key - .k
+Background - .b
+Verse/Slide - .0-.9, ./, .*
+Output delimiter (alt text for 2nd output screen) - .-
+Comment - .#
+
+Lyric File Format
+Title: The first line is taken as the title.
+Body: The body text is grouped into one or more "pages". Pages are separated by
+one or more blank lines. A period ('.') in column 1 on its own denotes a blank line
+within the page.
+Control Information: Control information may be specified by including a period ('.')
+in column 1 followed by a specific character. These are:-
+.i Song/Lyric information
+Usually copyright notice and may include the artist/composer
+.i ©2009 Great Music
+.s Sequence information
+User defined information to assist the operator in the order the song is played.
+.s V1 Ch V2 Ch Ch
+.k Key information
+The music key
+.k G
+.k Eb
+.0
+.1 thru .9
+./
+.*
+Keyboard shortcut
+Tag displaying keyboard shortcut for jumping to the slide (block of text following the tag).
+This typically corresponds to verses, chorus, bridge, reprise, etc.
+.1
+./
+.0
+.b Background
+Specifies an image or display scheme to use as the background. A single .b tag at the top of the file will apply to the whole song. However, multiple .b tags can be included throughout the song to override to another image. You could effectively have an image for every page.
+The filename does not require the full path if the image file resides in (or below) the background folder.
+.b Sunset.jpg
+.b OurLogo.P4Ds
