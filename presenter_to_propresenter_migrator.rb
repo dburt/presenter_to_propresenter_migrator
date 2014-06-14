@@ -171,8 +171,11 @@ class ProPresenter5Song
     doc['artist'] = presenter_song.artist
     doc['author'] = presenter_song.artist
     doc['CCLICopyRightInfo'] = presenter_song.info  # where does this go in the interface?
-    doc['notes'] = [("Key: #{presenter_song.key}" if presenter_song.key),
-      ("Sequence: #{presenter_song.sequence}" if presenter_song.sequence)].compact.join("\n")
+    doc['notes'] = [
+      ("Key: #{presenter_song.key}" if presenter_song.key),
+      ("Sequence: #{presenter_song.sequence}" if presenter_song.sequence),
+      ("Category: #{File.basename(Dir.pwd)}"),
+    ].compact.join("\n")
     slide_groups.zip(presenter_song.slides).each do |slide_group, slide|
       slide_group["name"] = slide.number =~ /^\d+$/ ? "Verse #{slide.number}" : slide.number
     end
@@ -203,7 +206,7 @@ if __FILE__ == $0
     OUTPUT_DIR = "modified_xml"
     FileUtils.mkdir_p OUTPUT_DIR
     Dir['*.txt'].each do |filename|
-      pro5_name = filename.sub(/txt/i, 'pro5')
+      pro5_name = filename.gsub(/_/, ' ').sub(/txt/i, 'pro5')
       song = PresenterSong.new File.read(filename)
       pro5 = ProPresenter5Song.new File.read("#{PROPRESENTER_DIR}/#{pro5_name}")
       # p [song.slides.size, pro5.slide_groups.size, filename]
